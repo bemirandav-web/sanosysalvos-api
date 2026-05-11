@@ -11,3 +11,4 @@ module.exports = {
   coverageDirectory: 'coverage',
   coverageReporters: ['text', 'lcov']
 };
+// Tests v1.0
