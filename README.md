@@ -320,3 +320,4 @@ main          ─── Producción estable (se despliega en Vercel)
 | Contraseñas en texto plano | `AuthController.java` | bcrypt hash |
 | `UserDTO` vs `UserDto` case mismatch | `LoginResponse.java` | Interfaces TypeScript consistentes |
 | Import `java.net.Authenticator` innecesario | `SecurityConfig.java` | Eliminado |
+
