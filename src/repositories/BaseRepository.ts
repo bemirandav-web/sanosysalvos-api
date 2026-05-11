@@ -100,3 +100,4 @@ export abstract class BaseRepository<T extends { id?: number }> implements IRepo
     return true;
   }
 }
+// Repository Pattern implementation v1.0
