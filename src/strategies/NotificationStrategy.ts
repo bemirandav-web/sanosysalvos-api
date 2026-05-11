@@ -125,3 +125,4 @@ export class NotificationService {
     return Promise.all(strategies.map((s) => s.send(data)));
   }
 }
+// Strategy Pattern implementation v1.0
