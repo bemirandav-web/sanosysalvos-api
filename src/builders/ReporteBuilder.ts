@@ -127,3 +127,4 @@ export class ReporteDirector {
       .build();
   }
 }
+// Builder Pattern implementation v1.0
