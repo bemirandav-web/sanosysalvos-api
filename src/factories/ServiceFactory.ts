@@ -112,3 +112,4 @@ export class ServiceFactory {
     return new NotificationService(strategy);
   }
 }
+// Factory Pattern implementation v1.0
