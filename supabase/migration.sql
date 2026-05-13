@@ -118,4 +118,4 @@ INSERT INTO mascotas (nombre, especie, raza, color, estado, ubicacion, edad, tam
     ('Michi', 'Gato', 'Siamés', 'Blanco', 'encontrado', 'Providencia', '2 años', 'Pequeño'),
     ('Rocky', 'Perro', 'Bulldog', 'Marrón', 'en_adopcion', 'Las Condes', '5 años', 'Mediano')
 ON CONFLICT DO NOTHING;
-// Supabase migration v1.0
+-- Supabase migration v1.0
