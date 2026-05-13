@@ -1,8 +1,3 @@
-/**
- * Repositorio de Mascotas - Repository Pattern
- * Extiende BaseRepository con consultas específicas del dominio
- */
-
 import { SupabaseClient } from '@supabase/supabase-js';
 import { BaseRepository } from './BaseRepository';
 import { Mascota } from '../models';

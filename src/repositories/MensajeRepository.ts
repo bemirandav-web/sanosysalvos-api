@@ -1,7 +1,3 @@
-/**
- * Repositorio de Mensajes - Repository Pattern
- */
-
 import { SupabaseClient } from '@supabase/supabase-js';
 import { BaseRepository } from './BaseRepository';
 import { Mensaje } from '../models';

@@ -1,7 +1,3 @@
-/**
- * Repositorio de Tickets de Soporte - Repository Pattern
- */
-
 import { SupabaseClient } from '@supabase/supabase-js';
 import { BaseRepository } from './BaseRepository';
 import { SoporteTicket } from '../models';

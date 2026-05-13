@@ -1,29 +1,9 @@
-/**
- * ============================================================
- * PATRÓN DE DISEÑO: BUILDER PATTERN
- * ============================================================
- * 
- * Problema que resuelve:
- *   Simplifica la creación de objetos complejos (como Reporte)
- *   que tienen múltiples campos opcionales y requieren validación.
- *   Evita constructores con muchos parámetros y permite construir
- *   objetos paso a paso con una API fluida.
- * 
- * Beneficios:
- *   - Código más legible al construir objetos complejos
- *   - Validación centralizada antes de crear el objeto
- *   - Inmutabilidad del objeto final
- *   - Fácil de extender con nuevos campos
- * ============================================================
- */
-
 import { Reporte } from '../models';
 
 export class ReporteBuilder {
   private reporte: Partial<Reporte> = {};
 
   constructor() {
-    // Valores por defecto
     this.reporte.fecha_reporte = new Date().toISOString();
   }
 
@@ -58,11 +38,9 @@ export class ReporteBuilder {
   }
 
   /**
-   * Valida y construye el objeto Reporte final
    * @throws Error si faltan campos obligatorios
    */
   build(): Partial<Reporte> {
-    // Validaciones
     if (!this.reporte.descripcion || this.reporte.descripcion.trim() === '') {
       throw new Error('La descripción del reporte es obligatoria');
     }
@@ -77,14 +55,10 @@ export class ReporteBuilder {
       throw new Error('La ubicación aproximada es obligatoria');
     }
 
-    // Retorna copia inmutable
     return { ...this.reporte };
   }
 }
 
-/**
- * Director: configura builders para tipos comunes de reportes
- */
 export class ReporteDirector {
   static crearReportePerdido(
     descripcion: string,
@@ -127,4 +101,3 @@ export class ReporteDirector {
       .build();
   }
 }
-// Builder Pattern implementation v1.0

@@ -1,15 +1,9 @@
-/**
- * Controlador de Mascotas
- * Endpoints CRUD para /api/mascotas
- */
-
 import { Router, Request, Response } from 'express';
 import { MascotaService } from '../services/MascotaService';
 
 export function createMascotaController(mascotaService: MascotaService): Router {
   const router = Router();
 
-  /** GET /api/mascotas */
   router.get('/', async (_req: Request, res: Response) => {
     try {
       const mascotas = await mascotaService.obtenerTodasLasMascotas();
@@ -19,7 +13,6 @@ export function createMascotaController(mascotaService: MascotaService): Router 
     }
   });
 
-  /** GET /api/mascotas/estado/:estado */
   router.get('/estado/:estado', async (req: Request, res: Response) => {
     try {
       const mascotas = await mascotaService.obtenerMascotasPorEstado(req.params.estado);
@@ -29,7 +22,6 @@ export function createMascotaController(mascotaService: MascotaService): Router 
     }
   });
 
-  /** GET /api/mascotas/:id */
   router.get('/:id', async (req: Request, res: Response) => {
     try {
       const id = parseInt(req.params.id, 10);
@@ -48,7 +40,6 @@ export function createMascotaController(mascotaService: MascotaService): Router 
     }
   });
 
-  /** POST /api/mascotas */
   router.post('/', async (req: Request, res: Response) => {
     try {
       const mascota = await mascotaService.guardarMascota(req.body);
@@ -58,7 +49,6 @@ export function createMascotaController(mascotaService: MascotaService): Router 
     }
   });
 
-  /** PUT /api/mascotas/:id */
   router.put('/:id', async (req: Request, res: Response) => {
     try {
       const id = parseInt(req.params.id, 10);
@@ -69,7 +59,6 @@ export function createMascotaController(mascotaService: MascotaService): Router 
     }
   });
 
-  /** DELETE /api/mascotas/:id */
   router.delete('/:id', async (req: Request, res: Response) => {
     try {
       const id = parseInt(req.params.id, 10);

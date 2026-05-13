@@ -1,14 +1,9 @@
-/**
- * Controlador de Mensajes de contacto
- */
-
 import { Router, Request, Response } from 'express';
 import { MensajeService } from '../services/MensajeService';
 
 export function createMensajeController(mensajeService: MensajeService): Router {
   const router = Router();
 
-  /** GET /api/mensajes */
   router.get('/', async (_req: Request, res: Response) => {
     try {
       const mensajes = await mensajeService.obtenerTodosLosMensajes();
@@ -18,7 +13,6 @@ export function createMensajeController(mensajeService: MensajeService): Router 
     }
   });
 
-  /** POST /api/mensajes */
   router.post('/', async (req: Request, res: Response) => {
     try {
       const mensaje = await mensajeService.crearMensaje(req.body);
@@ -28,7 +22,6 @@ export function createMensajeController(mensajeService: MensajeService): Router 
     }
   });
 
-  /** DELETE /api/mensajes/:id */
   router.delete('/:id', async (req: Request, res: Response) => {
     try {
       const id = parseInt(req.params.id, 10);

@@ -1,7 +1,3 @@
-/**
- * Modelos de dominio - Entidades del sistema Sanos y Salvos
- */
-
 export interface Usuario {
   id?: number;
   nombre: string;
@@ -74,7 +70,6 @@ export interface SoporteTicket {
   estado: string;
 }
 
-/** DTO para login */
 export interface LoginRequest {
   email: string;
   password: string;

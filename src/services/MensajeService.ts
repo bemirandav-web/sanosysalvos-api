@@ -1,7 +1,3 @@
-/**
- * Servicio de Mensajes de contacto
- */
-
 import { Mensaje } from '../models';
 import { IMensajeRepository } from '../repositories/MensajeRepository';
 

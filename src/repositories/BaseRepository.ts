@@ -1,27 +1,6 @@
-/**
- * ============================================================
- * PATRÓN DE DISEÑO: REPOSITORY PATTERN
- * ============================================================
- * 
- * Problema que resuelve:
- *   Desacopla la lógica de negocio del acceso a datos,
- *   permitiendo cambiar la fuente de datos (Supabase, PostgreSQL
- *   directo, memoria, etc.) sin modificar los servicios.
- * 
- * Beneficios:
- *   - Abstracción del acceso a datos
- *   - Facilita testing con repositorios mock
- *   - Permite cambiar de base de datos sin afectar la lógica
- *   - Código más limpio y mantenible
- * ============================================================
- */
-
 import { SupabaseClient } from '@supabase/supabase-js';
 import SupabaseConfig from '../config/supabase';
 
-/**
- * Interfaz genérica del repositorio - define el contrato CRUD
- */
 export interface IRepository<T> {
   findAll(): Promise<T[]>;
   findById(id: number): Promise<T | null>;
@@ -30,10 +9,6 @@ export interface IRepository<T> {
   delete(id: number): Promise<boolean>;
 }
 
-/**
- * Implementación base del repositorio usando Supabase
- * Clase abstracta que proporciona operaciones CRUD genéricas
- */
 export abstract class BaseRepository<T extends { id?: number }> implements IRepository<T> {
   protected supabase: SupabaseClient;
   protected tableName: string;
@@ -61,7 +36,7 @@ export abstract class BaseRepository<T extends { id?: number }> implements IRepo
       .single();
 
     if (error) {
-      if (error.code === 'PGRST116') return null; // Not found
+      if (error.code === 'PGRST116') return null;
       throw new Error(`Error fetching ${this.tableName} by id: ${error.message}`);
     }
     return data as T;
@@ -100,4 +75,3 @@ export abstract class BaseRepository<T extends { id?: number }> implements IRepo
     return true;
   }
 }
-// Repository Pattern implementation v1.0

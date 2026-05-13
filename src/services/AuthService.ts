@@ -1,8 +1,3 @@
-/**
- * Servicio de Autenticación
- * Usa Repository Pattern + JWT para manejo seguro de sesiones
- */
-
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import { Usuario, LoginRequest, LoginResponse, RegisterRequest } from '../models';
@@ -41,7 +36,6 @@ export class AuthService {
   }
 
   async register(request: RegisterRequest): Promise<{ message: string; user: Partial<Usuario> }> {
-    // Validaciones
     if (!request.email || !request.password || !request.nombre) {
       throw new Error('Todos los campos son obligatorios');
     }
@@ -54,7 +48,6 @@ export class AuthService {
       throw new Error('El correo ya está registrado');
     }
 
-    // Hash de la contraseña (fix del bug original que guardaba en texto plano)
     const hashedPassword = await bcrypt.hash(request.password, 10);
 
     const role = request.email.includes('admin') ? 'admin' : 'user';
@@ -78,7 +71,7 @@ export class AuthService {
   }
 
   private generateToken(usuario: Usuario): string {
-    const expiresInSeconds = 86400; // 24 horas
+    const expiresInSeconds = 86400;
     return jwt.sign(
       { id: usuario.id, email: usuario.email, role: usuario.role },
       JWT_SECRET,

@@ -1,8 +1,3 @@
-/**
- * Middleware de autenticación JWT
- * Reemplaza el JwtTokenFilter con bugs del proyecto original
- */
-
 import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
 
@@ -12,9 +7,6 @@ export interface AuthenticatedRequest extends Request {
   user?: { id: number; email: string; role: string };
 }
 
-/**
- * Middleware que verifica el token JWT
- */
 export function authMiddleware(req: AuthenticatedRequest, res: Response, next: NextFunction): void {
   const authHeader = req.headers.authorization;
 
@@ -34,9 +26,6 @@ export function authMiddleware(req: AuthenticatedRequest, res: Response, next: N
   }
 }
 
-/**
- * Middleware que verifica rol de administrador
- */
 export function adminMiddleware(req: AuthenticatedRequest, res: Response, next: NextFunction): void {
   if (!req.user || req.user.role !== 'admin') {
     res.status(403).json({ error: 'Acceso denegado. Se requiere rol de administrador' });

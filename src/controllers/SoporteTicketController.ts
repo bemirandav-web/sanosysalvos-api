@@ -1,14 +1,9 @@
-/**
- * Controlador de Tickets de Soporte
- */
-
 import { Router, Request, Response } from 'express';
 import { SoporteTicketService } from '../services/SoporteTicketService';
 
 export function createSoporteTicketController(service: SoporteTicketService): Router {
   const router = Router();
 
-  /** GET /api/soporte */
   router.get('/', async (_req: Request, res: Response) => {
     try {
       const tickets = await service.obtenerTodos();
@@ -18,7 +13,6 @@ export function createSoporteTicketController(service: SoporteTicketService): Ro
     }
   });
 
-  /** GET /api/soporte/usuario/:email */
   router.get('/usuario/:email', async (req: Request, res: Response) => {
     try {
       const tickets = await service.obtenerPorEmail(req.params.email);
@@ -28,7 +22,6 @@ export function createSoporteTicketController(service: SoporteTicketService): Ro
     }
   });
 
-  /** POST /api/soporte */
   router.post('/', async (req: Request, res: Response) => {
     try {
       const ticket = await service.crearTicket(req.body);
@@ -38,7 +31,6 @@ export function createSoporteTicketController(service: SoporteTicketService): Ro
     }
   });
 
-  /** PATCH /api/soporte/:id/estado */
   router.patch('/:id/estado', async (req: Request, res: Response) => {
     try {
       const id = parseInt(req.params.id, 10);

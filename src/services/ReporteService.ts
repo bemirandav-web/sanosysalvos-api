@@ -1,7 +1,3 @@
-/**
- * Servicio de Reportes - Usa Builder Pattern para crear reportes
- */
-
 import { Reporte } from '../models';
 import { IReporteRepository } from '../repositories/ReporteRepository';
 import { ReporteBuilder } from '../builders/ReporteBuilder';
@@ -25,9 +21,6 @@ export class ReporteService {
     return this.repository.findByTipoReporte(tipo);
   }
 
-  /**
-   * Crea un reporte usando el Builder Pattern para validar y construir
-   */
   async crearReporte(data: {
     descripcion: string;
     ubicacion_aproximada: string;

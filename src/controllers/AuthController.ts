@@ -1,15 +1,9 @@
-/**
- * Controlador de Autenticación
- * Endpoints: POST /api/auth/login, POST /api/auth/register
- */
-
 import { Router, Request, Response } from 'express';
 import { AuthService } from '../services/AuthService';
 
 export function createAuthController(authService: AuthService): Router {
   const router = Router();
 
-  /** POST /api/auth/login */
   router.post('/login', async (req: Request, res: Response) => {
     try {
       const { email, password } = req.body;
@@ -24,7 +18,6 @@ export function createAuthController(authService: AuthService): Router {
     }
   });
 
-  /** POST /api/auth/register */
   router.post('/register', async (req: Request, res: Response) => {
     try {
       const { email, password, nombre } = req.body;

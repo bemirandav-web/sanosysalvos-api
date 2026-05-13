@@ -1,7 +1,3 @@
-/**
- * Repositorio de Usuarios - Repository Pattern
- */
-
 import { SupabaseClient } from '@supabase/supabase-js';
 import { BaseRepository } from './BaseRepository';
 import { Usuario } from '../models';

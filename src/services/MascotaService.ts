@@ -1,8 +1,3 @@
-/**
- * Servicio de Mascotas - Lógica de negocio
- * Usa Repository Pattern para acceso a datos
- */
-
 import { Mascota } from '../models';
 import { IMascotaRepository } from '../repositories/MascotaRepository';
 
@@ -26,7 +21,6 @@ export class MascotaService {
   }
 
   async guardarMascota(mascota: Partial<Mascota>): Promise<Mascota> {
-    // Validaciones de negocio
     if (!mascota.nombre || mascota.nombre.trim() === '') {
       throw new Error('El nombre de la mascota es obligatorio');
     }
@@ -34,7 +28,7 @@ export class MascotaService {
       throw new Error('La especie es obligatoria');
     }
     if (!mascota.estado) {
-      mascota.estado = 'perdido'; // Estado por defecto
+      mascota.estado = 'perdido';
     }
     return this.repository.create(mascota);
   }

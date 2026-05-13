@@ -1,7 +1,3 @@
-/**
- * Servicio de Tickets de Soporte
- */
-
 import { SoporteTicket } from '../models';
 import { ISoporteTicketRepository } from '../repositories/SoporteTicketRepository';
 

@@ -1,7 +1,3 @@
-/**
- * Repositorio de Reportes - Repository Pattern
- */
-
 import { SupabaseClient } from '@supabase/supabase-js';
 import { BaseRepository } from './BaseRepository';
 import { Reporte } from '../models';
