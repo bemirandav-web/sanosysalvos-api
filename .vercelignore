@@ -1,0 +1,35 @@
+# Dependencias
+node_modules/
+
+# Tests y cobertura
+coverage/
+src/__tests__/
+jest.config.js
+
+# Variables de entorno locales
+.env
+.env.local
+.env.development
+
+# Archivos de documentacion auxiliar
+PATRONES_DISEÑO.md
+PATRONES_DISEÑO.docx
+PATRONES_DISEÑO.pdf
+INSTRUCCIONES_COLABORADORES.md
+INSTRUCCIONES_COLABORADORES.docx
+INSTRUCCIONES_COLABORADORES.pdf
+README_DEPLOY.md
+
+# Compilados locales
+dist/
+
+# Git
+.git/
+.gitignore
+
+# SQL de migracion (ya ejecutado en Supabase)
+supabase/
+
+# Misc
+*.log
+.DS_Store
