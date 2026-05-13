@@ -3,11 +3,13 @@ import { UsuarioRepository, IUsuarioRepository } from '../repositories/UsuarioRe
 import { ReporteRepository, IReporteRepository } from '../repositories/ReporteRepository';
 import { MensajeRepository, IMensajeRepository } from '../repositories/MensajeRepository';
 import { SoporteTicketRepository, ISoporteTicketRepository } from '../repositories/SoporteTicketRepository';
+import { DireccionRepository, IDireccionRepository } from '../repositories/DireccionRepository';
 import { MascotaService } from '../services/MascotaService';
 import { AuthService } from '../services/AuthService';
 import { ReporteService } from '../services/ReporteService';
 import { MensajeService } from '../services/MensajeService';
 import { SoporteTicketService } from '../services/SoporteTicketService';
+import { DireccionService } from '../services/DireccionService';
 import {
   NotificationService,
   EmailNotificationStrategy,
@@ -45,6 +47,10 @@ export class ServiceFactory {
     return new SoporteTicketRepository();
   }
 
+  static createDireccionRepository(): IDireccionRepository {
+    return new DireccionRepository();
+  }
+
   static createMascotaService(repo?: IMascotaRepository): MascotaService {
     return new MascotaService(repo || ServiceFactory.createMascotaRepository());
   }
@@ -63,6 +69,10 @@ export class ServiceFactory {
 
   static createSoporteTicketService(repo?: ISoporteTicketRepository): SoporteTicketService {
     return new SoporteTicketService(repo || ServiceFactory.createSoporteTicketRepository());
+  }
+
+  static createDireccionService(repo?: IDireccionRepository): DireccionService {
+    return new DireccionService(repo || ServiceFactory.createDireccionRepository());
   }
 
   static createNotificationService(channel: string = 'email'): NotificationService {

@@ -8,6 +8,8 @@ import { createMascotaController } from './controllers/MascotaController';
 import { createReporteController } from './controllers/ReporteController';
 import { createMensajeController } from './controllers/MensajeController';
 import { createSoporteTicketController } from './controllers/SoporteTicketController';
+import { createDireccionController } from './controllers/DireccionController';
+import { createAdminUsuarioController } from './controllers/AdminUsuarioController';
 import { authMiddleware, adminMiddleware } from './middleware/authMiddleware';
 
 dotenv.config();
@@ -27,13 +29,16 @@ const mascotaService = ServiceFactory.createMascotaService();
 const reporteService = ServiceFactory.createReporteService();
 const mensajeService = ServiceFactory.createMensajeService();
 const soporteTicketService = ServiceFactory.createSoporteTicketService();
+const direccionService = ServiceFactory.createDireccionService();
 
 app.use('/api/auth', createAuthController(authService));
 app.use('/api/mascotas', createMascotaController(mascotaService));
 app.use('/api/reportes', createReporteController(reporteService));
 app.use('/api/mensajes', createMensajeController(mensajeService));
 
+app.use('/api/direcciones', authMiddleware, createDireccionController(direccionService));
 app.use('/api/soporte', authMiddleware, createSoporteTicketController(soporteTicketService));
+app.use('/api/admin/usuarios', authMiddleware, adminMiddleware, createAdminUsuarioController());
 
 app.get('/api/health', (_req, res) => {
   res.json({
@@ -54,7 +59,9 @@ app.get('/', (_req, res) => {
       mascotas: '/api/mascotas',
       reportes: '/api/reportes',
       mensajes: '/api/mensajes',
+      direcciones: '/api/direcciones (requiere autenticacion)',
       soporte: '/api/soporte (requiere autenticacion)',
+      admin: '/api/admin/usuarios (requiere autenticacion + rol admin)',
     },
   });
 });
